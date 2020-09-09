@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TransparencyOmakase</title>
+    <title>Transparency</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,26 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="Header">
+      <div class="Header-item">
+        <a href="#" class="Header-link f4 d-flex flex-items-center">
+          <%= octicon "book", class: "mr-2", height: 32 %>
+          <span>Songbook</span>
+        </a>
+      </div>
+      <div class="Header-item">
+        <input type="search" class="form-control input-dark" />
+      </div>
+      <div class="Header-item Header-item--full">
+        Menu
+      </div>
+      <div class="Header-item mr-0">
+        <%= octicon "person", class: "mr-2", height: 20 %>
+      </div>
+    </div>
+
+    <div class="mx-auto" style="max-width: 640px">
+      <%= yield %>
+    </div>
   </body>
 </html>
