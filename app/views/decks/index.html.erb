@@ -17,12 +17,11 @@
         <summary>Raw</summary>
         <%= deck.raw %>
       </details>
-      <span class="flex-0 px-2"><%= link_to 'Show', deck %></span>
-      <span class="flex-0 px-2"><%= link_to 'Edit', edit_deck_path(deck) %></span>
-      <span class="flex-0 px-2"><%= link_to 'Destroy', deck, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+      <%= link_to 'Show', deck, class: "flex-0 px-2" %>
+      <%= link_to 'Edit', edit_deck_path(deck), class: "flex-0 px-2" %>
+      <%= link_to 'Destroy', deck, method: :delete, data: { confirm: 'Are you sure?' }, class: "flex-0 px-2" %>
     </div>
   <% end %>
 </div>
-<br>
 
-<%= link_to 'New Deck', new_deck_path %>
+<%= link_to 'New Deck', new_deck_path, class: "btn mt-2", role: "button" %>

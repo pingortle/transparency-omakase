@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -17,18 +18,9 @@
           <span>Songbook</span>
         </a>
       </div>
-      <div class="Header-item">
-        <input type="search" class="form-control input-dark" />
-      </div>
-      <div class="Header-item Header-item--full">
-        Menu
-      </div>
-      <div class="Header-item mr-0">
-        <%= octicon "person", class: "mr-2", height: 20 %>
-      </div>
     </div>
 
-    <div class="mx-auto" style="max-width: 640px">
+    <div class="mx-auto px-2" style="max-width: 640px">
       <%= yield %>
     </div>
   </body>
