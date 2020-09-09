@@ -28,7 +28,7 @@ class DecksController < ApplicationController
 
     respond_to do |format|
       if @deck.save
-        format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
+        format.html { redirect_to @deck, notice: "Deck was successfully created." }
         format.json { render :show, status: :created, location: @deck }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class DecksController < ApplicationController
   def update
     respond_to do |format|
       if @deck.update(deck_params)
-        format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
+        format.html { redirect_to @deck, notice: "Deck was successfully updated." }
         format.json { render :show, status: :ok, location: @deck }
       else
         format.html { render :edit }
@@ -56,19 +56,20 @@ class DecksController < ApplicationController
   def destroy
     @deck.destroy
     respond_to do |format|
-      format.html { redirect_to decks_url, notice: 'Deck was successfully destroyed.' }
+      format.html { redirect_to decks_url, notice: "Deck was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_deck
-      @deck = Deck.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def deck_params
-      params.require(:deck).permit(:title, :raw)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_deck
+    @deck = Deck.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def deck_params
+    params.require(:deck).permit(:title, :raw)
+  end
 end

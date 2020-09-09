@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class DecksControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -16,8 +16,8 @@ class DecksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create deck" do
-    assert_difference('Deck.count') do
-      post decks_url, params: { deck: { raw: @deck.raw, title: @deck.title } }
+    assert_difference("Deck.count") do
+      post decks_url, params: {deck: {raw: @deck.raw, title: @deck.title}}
     end
 
     assert_redirected_to deck_url(Deck.last)
@@ -34,12 +34,12 @@ class DecksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update deck" do
-    patch deck_url(@deck), params: { deck: { raw: @deck.raw, title: @deck.title } }
+    patch deck_url(@deck), params: {deck: {raw: @deck.raw, title: @deck.title}}
     assert_redirected_to deck_url(@deck)
   end
 
   test "should destroy deck" do
-    assert_difference('Deck.count', -1) do
+    assert_difference("Deck.count", -1) do
       delete deck_url(@deck)
     end
 
