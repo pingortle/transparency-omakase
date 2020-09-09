@@ -11,17 +11,17 @@
     </h3>
   </div>
   <% @decks.each do |deck| %>
-    <div class="Box-body d-flex">
-      <span class="flex-1"><%= deck.title %></span>
-      <details class="flex-1">
-        <summary>Raw</summary>
-        <%= deck.raw %>
+    <div class="Box-body d-flex flex-row flex-wrap">
+      <h4 class="flex-1 mb-2"><%= deck.title %></h4>
+      <details class="flex-md-0 mt-2 mb-4 mb-sm-2 mb-md-0 flex-md-order-1 width-full">
+        <summary class="btn">Preview</summary>
+        <pre class="mt-2 overflow-scroll"><%= deck.raw %></pre>
       </details>
-      <%= link_to 'Show', deck, class: "flex-0 px-2" %>
-      <%= link_to 'Edit', edit_deck_path(deck), class: "flex-0 px-2" %>
-      <%= link_to 'Destroy', deck, method: :delete, data: { confirm: 'Are you sure?' }, class: "flex-0 px-2" %>
+      <span class="flex-0"><%= link_to 'Show', deck, class: "btn mr-2 my-1 my-md-0" %></span>
+      <span class="flex-0"><%= link_to 'Edit', edit_deck_path(deck), class: "btn mx-2 my-1 my-md-0" %></span>
+      <span class="flex-0"><%= link_to 'Destroy', deck, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger mx-2 my-1 my-md-0" %></span>
     </div>
   <% end %>
 </div>
 
-<%= link_to 'New Deck', new_deck_path, class: "btn mt-2", role: "button" %>
+<%= link_to 'New Deck', new_deck_path, class: "btn btn-primary mt-2", role: "button" %>
