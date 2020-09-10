@@ -17,6 +17,7 @@
         <summary class="btn">Preview</summary>
         <pre class="mt-2 overflow-scroll"><%= deck.raw %></pre>
       </details>
+      <span class="flex-0"><%= link_to 'Present', spontaneous_event_show_path(deck_id: deck), class: "btn btn-primary mr-2 my-1 my-md-0" %></span>
       <span class="flex-0"><%= link_to 'Show', deck, class: "btn mr-2 my-1 my-md-0" %></span>
       <span class="flex-0"><%= link_to 'Edit', edit_deck_path(deck), class: "btn mx-2 my-1 my-md-0" %></span>
       <span class="flex-0"><%= link_to 'Destroy', deck, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger mx-2 my-1 my-md-0" %></span>
