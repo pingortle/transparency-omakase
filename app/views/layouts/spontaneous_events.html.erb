@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Presenting</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <style>
+      body { font-family: system-ui; }
+      h1, h2, h3 {
+        font-family: serif;
+        font-weight: normal;
+      }
+
+      .remark-code, .remark-inline-code { font-family: ui-monospace; }
+
+      .floating-controls {
+        z-index: 999;
+      }
+
+      .remark-slide-content h1[id] { font-size: 1.6em; }
+      .remark-slide-container:first-child .remark-slide-content h1[id] { font-size: 3em; }
+      .remark-slide-content p { font-size: 2em; }
+    </style>
+  </head>
+
+  <body data-no-turbolink>
+    <%= yield %>
+  </body>
+</html>
+
