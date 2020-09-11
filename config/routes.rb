@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "welcome#index"
+  root "decks#index"
   get "spontaneous_event/show"
 
   resources :decks

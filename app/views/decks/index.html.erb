@@ -1,28 +1,30 @@
-<p id="notice"><%= notice %></p>
+<% if notice.present? %>
+  <p class="flash mt-2"><%= notice %></p>
+<% end %>
 
-<div class="pagehead">
-  <h1>Decks</h1>
-</div>
-
+<%= link_to 'New Deck', new_deck_path, class: "btn btn-primary my-2", role: "button" %>
 <div class="Box">
   <div class="Box-header">
     <h3 class="Box-title">
-      Title
+      Decks
     </h3>
   </div>
   <% @decks.each do |deck| %>
     <div class="Box-body d-flex flex-row flex-wrap">
       <h4 class="flex-1 mb-2"><%= deck.title %></h4>
       <details class="flex-md-0 mt-2 mb-4 mb-sm-2 mb-md-0 flex-md-order-1 width-full">
-        <summary class="btn">Preview</summary>
+        <summary>Preview</summary>
         <pre class="mt-2 overflow-scroll"><%= deck.raw %></pre>
       </details>
-      <span class="flex-0" data-turbolinks="false"><%= link_to 'Present', spontaneous_event_show_path(deck_id: deck), class: "btn btn-primary mr-2 my-1 my-md-0" %></span>
-      <span class="flex-0"><%= link_to 'Show', deck, class: "btn mr-2 my-1 my-md-0" %></span>
-      <span class="flex-0"><%= link_to 'Edit', edit_deck_path(deck), class: "btn mr-4 my-1 my-md-0" %></span>
-      <span class="flex-0"><%= link_to 'Destroy', deck, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger mr-4 my-1 my-md-0" %></span>
+      <span class="flex-0" data-turbolinks="false">
+        <%= link_to(spontaneous_event_show_path(deck_id: deck), class: "btn btn-outline mr-2 my-2 my-md-0 d-flex flex-items-center") do %>
+          <%= octicon(:play, class: "mr-2") %>
+          Present
+        <% end %>
+      </span>
+      <span class="flex-0"><%= link_to 'Show', deck, class: "btn mr-2 my-2 my-md-0" %></span>
+      <span class="flex-0"><%= link_to 'Edit', edit_deck_path(deck), class: "btn mr-4 my-2 my-md-0" %></span>
+      <span class="flex-0"><%= link_to 'Destroy', deck, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger my-2 my-md-0" %></span>
     </div>
   <% end %>
 </div>
-
-<%= link_to 'New Deck', new_deck_path, class: "btn btn-primary mt-2", role: "button" %>
