@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -eux
+
+rails generate scaffold "$1" \
+  --no-stylesheets \
+  --no-scaffold-stylesheet \
+  "${@:2:$#}"
