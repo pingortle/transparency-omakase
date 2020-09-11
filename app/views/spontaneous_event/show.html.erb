@@ -4,5 +4,7 @@
 
 <%= javascript_include_tag 'remark-latest.min.js' %>
 <script type="text/javascript">
-  var slideshow = remark.create()
+  var slideshow = remark.create({
+    ratio: '16:9'
+  })
 </script>
