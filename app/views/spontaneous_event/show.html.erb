@@ -8,3 +8,8 @@
     ratio: '16:9'
   })
 </script>
+
+<%= javascript_include_tag 'mousetrap' %>
+<script type="text/javascript">
+  Mousetrap.bind('esc', function() { history.back() })
+</script>
