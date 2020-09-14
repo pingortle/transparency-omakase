@@ -1,15 +1,7 @@
-<textarea id="source">
-<%= @deck.raw %>
-</textarea>
-
-<%= javascript_include_tag 'remark-latest.min.js' %>
-<script type="text/javascript">
-  var slideshow = remark.create({
-    ratio: '16:9'
-  })
-</script>
-
-<%= javascript_include_tag 'mousetrap/mousetrap' %>
-<script type="text/javascript">
-  Mousetrap.bind('esc', function() { history.back() })
-</script>
+<div data-controller="slide-presentation">
+  <div data-target="slide-presentation.slides">
+    <section data-markdown data-separator="---">
+      <%= @deck.raw %>
+    </section>
+  </div>
+</div>

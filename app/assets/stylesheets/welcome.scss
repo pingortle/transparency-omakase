@@ -1,4 +1,7 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-@import "@primer/css/index.scss";
+@import '@primer/css/index.scss';
+
+@import 'reveal.js/dist/reveal.css';
+@import 'reveal.js/dist/theme/black.css';

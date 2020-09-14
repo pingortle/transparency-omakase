@@ -10,6 +10,8 @@
     "@rails/webpacker": "4.3.0",
     "@webcomponents/custom-elements": "^1.4.2",
     "mousetrap": "^1.6.5",
+    "reveal.js": "^4.0.2",
+    "stimulus": "^1.1.1",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
