@@ -1,5 +1,10 @@
 <div data-controller="deck">
-  <div data-target="deck.slide">
-    <%= @deck.raw %>
-  </div>
+  <% @deck.slides.each do |slide| %>
+    <div data-target="deck.slide">
+      <%= slide %>
+    </div>
+  <% end %>
+
+  <button data-action="deck#previous" data-target="deck.previousControl">&lt;</button>
+  <button data-action="deck#next" data-target="deck.nextControl">&gt;</button>
 </div>
