@@ -1,7 +1,5 @@
-<div data-controller="slide-presentation">
-  <div data-target="slide-presentation.slides">
-    <section data-markdown data-separator="---">
-      <%= @deck.raw %>
-    </section>
+<div data-controller="deck">
+  <div data-target="deck.slide">
+    <%= @deck.raw %>
   </div>
 </div>

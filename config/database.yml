@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: transparency_omakase_production
-  username: transparency_omakase
+  username: <%= ENV.fetch('TRANSPARENCY_OMAKASE_DATABASE_USERNAME', 'transparency_omakase') %>
   password: <%= ENV['TRANSPARENCY_OMAKASE_DATABASE_PASSWORD'] %>
