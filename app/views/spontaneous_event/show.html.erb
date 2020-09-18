@@ -1,10 +1,29 @@
-<div data-controller="deck">
-  <% @deck.slides.each do |slide| %>
-    <div data-target="deck.slide">
-      <%= slide %>
+<div style="/* width: 0 */" class="height-full d-flex flex-justify-center flex-items-center bg-gray-dark">
+  <div
+    data-controller="deck scalable"
+    style="transform-origin: center center; --scalable-width: 16em; --scalable-height: 9em"
+    class="position-relative d-flex flex-justify-center flex-items-center overflow-scroll bg-gray-dark"
+  >
+    <div class="position-fixed width-full top-0 d-flex flex-justify-between p-2">
+      <a href="/"><%= octicon "book", height: 16, class: "" %></a>
     </div>
-  <% end %>
+    <div class="position-fixed width-full bottom-0 d-flex flex-justify-between p-2">
+      <button data-action="deck#previous" data-target="deck.previousControl" type="button" class="m-0 p-0 btn-octicon">
+        <%= octicon "arrow-left", height: 16, class: "" %>
+      </button>
+      <button data-action="deck#next" data-target="deck.nextControl" type="button" class="m-0 p-0 btn-octicon">
+        <%= octicon "arrow-right", height: 16, class: "" %>
+      </button>
+    </div>
 
-  <button data-action="deck#previous" data-target="deck.previousControl">&lt;</button>
-  <button data-action="deck#next" data-target="deck.nextControl">&gt;</button>
+    <div data-deck-container>
+      <% @deck.slides.each do |slide| %>
+        <div data-target="deck.slide" style="font-size: 0.5em" class="text-center text-white">
+          <% sanitize(slide).split(/\r?\n/).map(&:chomp).reject(&:blank?).each do |line| %>
+            <p><%= raw line %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -10,10 +10,11 @@ export default class extends Controller {
   show (slide) {
     if (!slide) return
 
-    slide.hidden = false
     this.slideTargets.forEach(candidate => {
-      if (candidate !== slide) candidate.hidden = true
+      candidate.hidden = true
     })
+
+    slide.hidden = false
 
     this.nextControlTarget.disabled = !this.nextSlide
     this.previousControlTarget.disabled = !this.previousSlide

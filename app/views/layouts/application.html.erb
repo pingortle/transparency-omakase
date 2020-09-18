@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html class="height-full">
   <head>
-    <title>Transparency</title>
+    <title><%= @title || "Transparency" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,18 +12,24 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <div class="Header">
-      <div class="Header-item">
-        <a href="#" class="Header-link f4 d-flex flex-items-center">
-          <%= octicon "book", class: "mr-2", height: 32 %>
-          <span>Songbook</span>
-        </a>
+  <body style="height: 100vh; touch-action: manipulation;" class="bg-gray-dark">
+    <% unless @hide_header %>
+      <div class="Header">
+        <div class="Header-item">
+          <a href="/" class="Header-link f4 d-flex flex-items-center">
+            <%= octicon "book", class: "mr-2", height: 32 %>
+            <span>Songbook</span>
+          </a>
+        </div>
       </div>
-    </div>
+    <% end %>
 
-    <div class="mx-auto px-2 mb-6" style="max-width: 1004px">
+    <% if @presenting %>
       <%= yield %>
-    </div>
+    <% else %>
+      <div class="mx-auto px-2" style="max-width: 1004px">
+        <%= yield %>
+      </div>
+    <% end %>
   </body>
 </html>
