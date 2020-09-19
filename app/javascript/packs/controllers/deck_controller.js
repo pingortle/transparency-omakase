@@ -6,6 +6,11 @@ export default class extends Controller {
 
   connect () {
     this.show(this.slideTargets[0])
+    this.setupScrollPrevention()
+  }
+
+  disconnect () {
+    this.teardownScrollPrevention()
   }
 
   show (slide) {
@@ -33,6 +38,8 @@ export default class extends Controller {
     if (screenfull.isEnabled) screenfull.request()
   }
 
+  // Private
+
   get currentSlide () {
     return this.slideTargets.find(slide => !slide.hidden)
   }
@@ -47,5 +54,19 @@ export default class extends Controller {
 
   onlySlide (element) {
     return this.slideTargets.includes(element) ? element : null
+  }
+
+  setupScrollPrevention () {
+    const scrollable = this.element.parentElement
+    this.scrollPoller = setInterval(() => {
+      if (scrollable.scrollTop !== 0 || scrollable.scrollLeft !== 0) {
+        scrollable.scrollTop = 0
+        scrollable.scrollLeft = 0
+      }
+    }, 1000)
+  }
+
+  teardownScrollPrevention () {
+    clearInterval(this.scrollPoller)
   }
 }

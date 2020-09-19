@@ -27,11 +27,33 @@ export default class extends Controller {
       }
     })
 
-    this.resizeObserver.observe(world)
+    const ua = window.navigator.userAgent
+    const mqStandAlone = '(display-mode: standalone)'
+    let iphone = ua.indexOf('iPhone') !== -1 && ua.indexOf('Safari') !== -1
+    let appMode = 'browser'
+    if (
+      window.navigator.standalone ||
+      window.matchMedia(mqStandAlone).matches
+    ) {
+      appMode = 'standalone'
+    }
+
+    if (iphone && appMode !== 'standalone') {
+      this.iphoneResizer = () => {
+        this.resize({
+          width: window.innerWidth,
+          height: window.innerHeight
+        })
+      }
+      window.addEventListener('resize', this.iphoneResizer)
+    } else {
+      this.resizeObserver.observe(world)
+    }
   }
 
   disconnect () {
     this.resizeObserver.disconnect()
+    window.removeEventListener('resize', this.iphoneResizer)
   }
 
   get widthFactor () {
@@ -44,12 +66,10 @@ export default class extends Controller {
 
   get initialOffsetWidth () {
     return this.element.offsetWidth
-    return this.data.get('width')
   }
 
   get initialOffsetHeight () {
     return this.element.offsetHeight
-    return this.data.get('height')
   }
 
   resize ({ width, height }) {
