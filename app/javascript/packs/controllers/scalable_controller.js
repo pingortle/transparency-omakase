@@ -7,16 +7,17 @@ export default class extends Controller {
     this.element.style.width = 'var(--scalable-width)'
     this.element.style.height = 'var(--scalable-height)'
 
-    Math.min(world.offsetWidth, world.offsetHeight)
     this.resize({ width: world.offsetWidth, height: world.offsetHeight })
 
-    const resizeObserver = new ResizeObserver(entries => {
+    this.resizeObserver = new ResizeObserver(entries => {
       for (const entry of entries) {
         if (entry.contentBoxSize) {
-          this.resize({
-            width: entry.contentBoxSize.inlineSize,
-            height: entry.contentBoxSize.blockSize
-          })
+          for (const box of new Array(entry.contentBoxSize).flat()) {
+            this.resize({
+              width: box.inlineSize,
+              height: box.blockSize
+            })
+          }
         } else {
           this.resize({
             width: entry.contentRect.width,
@@ -26,7 +27,11 @@ export default class extends Controller {
       }
     })
 
-    resizeObserver.observe(world)
+    this.resizeObserver.observe(world)
+  }
+
+  disconnect () {
+    this.resizeObserver.disconnect()
   }
 
   get widthFactor () {
