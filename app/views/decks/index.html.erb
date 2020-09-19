@@ -2,7 +2,7 @@
   <p class="flash mt-2"><%= notice %></p>
 <% end %>
 
-<%= link_to 'New Deck', new_deck_path, class: "btn btn-primary my-2", role: "button" %>
+<%= link_to "New Deck", new_deck_path, class: "btn btn-primary my-2", role: "button" %>
 <div id="decks" class="Box">
   <div class="Box-header">
     <filter-input aria-owns="decks">
@@ -27,8 +27,8 @@
             Present
           <% end %>
         </span>
-        <span class="flex-0"><%= link_to 'Edit', edit_deck_path(deck), class: "btn mr-4 my-2 my-md-0" %></span>
-        <span class="flex-0"><%= link_to 'Destroy', deck, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger my-2 my-md-0" %></span>
+        <span class="flex-0"><%= link_to "Edit", edit_deck_path(deck), class: "btn mr-4 my-2 my-md-0" %></span>
+        <span class="flex-0"><%= link_to "Destroy", deck, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger my-2 my-md-0" %></span>
       </div>
     <% end %>
   </div>
