@@ -1,4 +1,5 @@
 import { Controller } from 'stimulus'
+import screenfull from 'screenfull'
 
 export default class extends Controller {
   static targets = ['slide', 'nextControl', 'previousControl']
@@ -26,6 +27,10 @@ export default class extends Controller {
 
   previous () {
     this.show(this.previousSlide)
+  }
+
+  fullscreen () {
+    if (screenfull.isEnabled) screenfull.request()
   }
 
   get currentSlide () {
