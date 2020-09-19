@@ -9,14 +9,13 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
     "@webcomponents/custom-elements": "^1.4.2",
-    "mousetrap": "^1.6.5",
-    "reveal.js": "^4.0.2",
     "stimulus": "^1.1.1",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {
     "prettier-standard": "^16.4.1",
+    "webpack-bundle-analyzer": "^3.8.0",
     "webpack-dev-server": "^3.11.0"
   }
 }

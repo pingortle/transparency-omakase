@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+(
+  export RAILS_ENV=production
+  export RAILS_SERVE_STATIC_FILES=true
+  export TRANSPARENCY_OMAKASE_DATABASE_USERNAME=''
+
+  rails assets:clobber assets:precompile
+  overmind start
+)
+

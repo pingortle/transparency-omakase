@@ -1,7 +1,8 @@
 class SpontaneousEventController < ApplicationController
-  layout "spontaneous_events"
-
   def show
+    @title = "Presenting"
+    @hide_header = true
+    @presenting = true
     @deck = Deck.find(params[:deck_id])
   end
 end
