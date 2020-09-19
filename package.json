@@ -12,6 +12,7 @@
     "mousetrap": "^1.6.5",
     "screenfull": "^5.0.2",
     "stimulus": "^1.1.1",
+    "tinygesture": "^1.1.4",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
