@@ -1,9 +1,15 @@
 <div style="/* width: 0 */" class="height-full d-flex flex-justify-center flex-items-center bg-gray-dark">
   <div
     data-controller="deck scalable"
+    data-action="next->deck#next previous->deck#previous"
     style="transform-origin: center center; --scalable-width: 16em; --scalable-height: 9em"
     class="position-relative d-flex flex-justify-center flex-items-center overflow-scroll bg-gray-dark"
   >
+    <input type="hidden" data-controller="key" data-key-combo="j" data-key-event="next" />
+    <input type="hidden" data-controller="key" data-key-combo="right" data-key-event="next" />
+    <input type="hidden" data-controller="key" data-key-combo="k" data-key-event="previous" />
+    <input type="hidden" data-controller="key" data-key-combo="left" data-key-event="previous" />
+
     <div class="position-fixed width-full top-0 d-flex flex-justify-between p-2">
       <a href="/"><%= octicon "book", height: 16, class: "" %></a>
     </div>
