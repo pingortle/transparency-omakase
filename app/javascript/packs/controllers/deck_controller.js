@@ -35,7 +35,7 @@ export default class extends Controller {
   }
 
   fullscreen () {
-    if (screenfull.isEnabled) screenfull.request()
+    if (screenfull.isEnabled) screenfull.toggle(this.element)
   }
 
   // Private
