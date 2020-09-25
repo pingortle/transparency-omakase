@@ -26,16 +26,18 @@ export default class extends Controller {
     this.previousControlTarget.disabled = !this.previousSlide
   }
 
-  next () {
+  next (event) {
+    event.preventDefault()
     this.show(this.nextSlide)
   }
 
-  previous () {
+  previous (event) {
+    event.preventDefault()
     this.show(this.previousSlide)
   }
 
   fullscreen () {
-    if (screenfull.isEnabled) screenfull.toggle(this.element)
+    if (screenfull.isEnabled) screenfull.toggle()
   }
 
   // Private
