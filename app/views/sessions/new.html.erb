@@ -1,16 +1,22 @@
-<p id="alert"><%= alert %></p>
+<div class="Box mb-8">
+  <div class="Box-header">
+    <h1>Login</h1>
+  </div>
+  <% if alert.present? %>
+    <div class="flash flash-error mt-2 mx-2"><%= alert %></div>
+  <% end %>
 
-<h1>Login</h1>
-<%= form_tag sessions_path do |form| %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
-  </div>
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions">
-    <%= submit_tag "Login" %>
-  </div>
-<% end %>
+  <%= form_for Session.new, html: {class: "d-flex flex-column p-2"} do |form| %>
+    <div class="d-flex flex-column mt-4">
+      <%= form.label :email %>
+      <%= form.text_field :email, type: :email, class: "form-control f4" %>
+    </div>
+
+    <div class="d-flex flex-column mt-4">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "form-control f4" %>
+    </div>
+
+    <%= submit_tag "Login", class: "btn btn-primary flex-self-baseline mt-4" %>
+  <% end %>
+</div>

@@ -26,6 +26,9 @@
             <span>Songbook</span>
           </a>
         </div>
+        <div class="Header-item Header-item--full d-flex flex-justify-end mr-0">
+          <%= link_to "Logout", session_path(id: :user), method: :delete, class: "btn btn-invisible" %>
+        </div>
       </div>
     <% end %>
 
