@@ -7,7 +7,7 @@ class DecksTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit decks_url
-    assert_selector "h1", text: "Decks"
+    assert_text "Filter decks"
   end
 
   test "creating a Deck" do
