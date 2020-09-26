@@ -27,7 +27,11 @@
           </a>
         </div>
         <div class="Header-item Header-item--full d-flex flex-justify-end mr-0">
-          <%= link_to "Logout", session_path(id: :user), method: :delete, class: "btn btn-invisible" %>
+          <% if Current.user.signed_in? %>
+            <%= link_to "Sign out", session_path(id: :current_user), method: :delete, class: "btn btn-invisible" %>
+          <% else %>
+            <%= link_to "Sign in", new_session_path, class: "btn btn-invisible" %>
+          <% end %>
         </div>
       </div>
     <% end %>
