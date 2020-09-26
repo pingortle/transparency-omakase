@@ -27,7 +27,7 @@ class DecksController < ApplicationController
     @deck = Deck.new(deck_params)
 
     respond_to do |format|
-      if @deck.save
+      if @deck.valid?(:authorization) && @deck.save
         format.html { redirect_to @deck, notice: "Deck was successfully created." }
         format.json { render :show, status: :created, location: @deck }
       else
@@ -41,7 +41,7 @@ class DecksController < ApplicationController
   # PATCH/PUT /decks/1.json
   def update
     respond_to do |format|
-      if @deck.update(deck_params)
+      if @deck.valid?(:authorization) && @deck.update(deck_params)
         format.html { redirect_to @deck, notice: "Deck was successfully updated." }
         format.json { render :show, status: :ok, location: @deck }
       else
@@ -54,10 +54,14 @@ class DecksController < ApplicationController
   # DELETE /decks/1
   # DELETE /decks/1.json
   def destroy
-    @deck.destroy
     respond_to do |format|
-      format.html { redirect_to decks_url, notice: "Deck was successfully destroyed." }
-      format.json { head :no_content }
+      if @deck.valid?(:authorization) && @deck.destroy
+        format.html { redirect_to decks_url, notice: "Deck was successfully destroyed." }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to decks_url, alert: @deck.errors.full_messages.join(", ") }
+        format.json { render json: @deck.errors, status: :unprocessable_entity }
+      end
     end
   end
 

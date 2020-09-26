@@ -1,9 +1,9 @@
 <%= form_with(model: deck, local: true, class: "d-flex flex-column") do |form| %>
   <% if deck.errors.any? %>
-    <div id="error_explanation">
+    <div class="flash flash-error mt-2">
       <h2><%= pluralize(deck.errors.count, "error") %> prohibited this deck from being saved:</h2>
 
-      <ul>
+      <ul class="mx-4">
         <% deck.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>

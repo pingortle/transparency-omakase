@@ -10,36 +10,42 @@ class DecksTest < ApplicationSystemTestCase
     assert_text "Filter decks"
   end
 
-  test "creating a Deck" do
-    visit decks_url
-    click_on "New Deck"
-
-    fill_in "Raw", with: @deck.raw
-    fill_in "Title", with: @deck.title
-    click_on "Create Deck"
-
-    assert_text "Deck was successfully created"
-    click_on "Back"
-  end
-
-  test "updating a Deck" do
-    visit decks_url
-    click_on "Edit", match: :first
-
-    fill_in "Raw", with: @deck.raw
-    fill_in "Title", with: @deck.title
-    click_on "Update Deck"
-
-    assert_text "Deck was successfully updated"
-    click_on "Back"
-  end
-
-  test "destroying a Deck" do
-    visit decks_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
+  class Authorized < self
+    setup do
+      login(:one)
     end
 
-    assert_text "Deck was successfully destroyed"
+    test "creating a Deck" do
+      visit decks_url
+      click_on "New Deck"
+
+      fill_in "Raw", with: @deck.raw
+      fill_in "Title", with: @deck.title
+      click_on "Create Deck"
+
+      assert_text "Deck was successfully created"
+      click_on "Back"
+    end
+
+    test "updating a Deck" do
+      visit decks_url
+      click_on "Edit", match: :first
+
+      fill_in "Raw", with: @deck.raw
+      fill_in "Title", with: @deck.title
+      click_on "Update Deck"
+
+      assert_text "Deck was successfully updated"
+      click_on "Back"
+    end
+
+    test "destroying a Deck" do
+      visit decks_url
+      page.accept_confirm do
+        click_on "Destroy", match: :first
+      end
+
+      assert_text "Deck was successfully destroyed"
+    end
   end
 end

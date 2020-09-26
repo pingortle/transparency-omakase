@@ -1,6 +1,9 @@
 <% if notice.present? %>
   <p class="flash mt-2"><%= notice %></p>
 <% end %>
+<% if alert.present? %>
+  <p class="flash flash-error mt-2"><%= alert %></p>
+<% end %>
 
 <%= link_to "New Deck", new_deck_path, class: "btn btn-primary my-2", role: "button" %>
 <div id="decks" class="Box mb-8">
