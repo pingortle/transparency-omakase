@@ -5,6 +5,9 @@ class User < ApplicationRecord
     unless Current.user.signed_in?
       errors.add(:authorization, "must be signed in")
     end
+    unless Current.user.is?(self)
+      errors.add(:authorization, "must not change user")
+    end
   end
 
   validates :email, presence: true, uniqueness: true

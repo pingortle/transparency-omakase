@@ -72,15 +72,5 @@ class DecksControllerTest < ActionDispatch::IntegrationTest
         delete deck_url(@deck)
       end
     end
-
-    def login(name)
-      post "/sessions", params: {
-        session: {
-          email: users(name).email,
-          password: "secret"
-        }
-      }
-      assert_response :redirect
-    end
   end
 end

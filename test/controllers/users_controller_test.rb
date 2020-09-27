@@ -25,22 +25,74 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should not update user" do
-    original = @user.dup
-    patch user_url(@user), params: {user: {email: "new@example.com", password: "new secret", password_confirmation: "new secret"}}
-    assert_equal original.email, @user.reload.email
-    assert_equal original.password_digest, @user.reload.password_digest
-  end
+  class Authorized < self
+    setup do
+      login(model: @user)
+    end
 
-  test "should create user" do
-    assert_no_difference("User.count") do
-      post users_url, params: {user: {email: "new@example.com", password: "secret", password_confirmation: "secret"}}
+    test "should update user" do
+      original = @user.dup
+      patch user_url(@user), params: {user: {email: "new@example.com", password: "new secret", password_confirmation: "new secret"}}
+      assert_equal "new@example.com", @user.reload.email
+      assert_not_equal original.password_digest, @user.reload.password_digest
+    end
+
+    test "should not create user" do
+      assert_no_difference("User.count") do
+        post users_url, params: {user: {email: "new@example.com", password: "secret", password_confirmation: "secret"}}
+      end
+    end
+
+    test "should destroy user" do
+      assert_difference("User.count", -1) do
+        delete user_url(@user)
+      end
     end
   end
 
-  test "should not destroy user" do
-    assert_no_difference("User.count") do
-      delete user_url(@user)
+  class OtherAuthorized < self
+    setup do
+      login(:two)
+    end
+
+    test "should not update user" do
+      original = @user.dup
+      patch user_url(@user), params: {user: {email: "new@example.com", password: "new secret", password_confirmation: "new secret"}}
+      assert_equal original.email, @user.reload.email
+      assert_equal original.password_digest, @user.reload.password_digest
+    end
+
+    test "should not create user" do
+      assert_no_difference("User.count") do
+        post users_url, params: {user: {email: "new@example.com", password: "secret", password_confirmation: "secret"}}
+      end
+    end
+
+    test "should not destroy user" do
+      assert_no_difference("User.count") do
+        delete user_url(@user)
+      end
+    end
+  end
+
+  class Unauthorized < self
+    test "should not update user" do
+      original = @user.dup
+      patch user_url(@user), params: {user: {email: "new@example.com", password: "new secret", password_confirmation: "new secret"}}
+      assert_equal original.email, @user.reload.email
+      assert_equal original.password_digest, @user.reload.password_digest
+    end
+
+    test "should not create user" do
+      assert_no_difference("User.count") do
+        post users_url, params: {user: {email: "new@example.com", password: "secret", password_confirmation: "secret"}}
+      end
+    end
+
+    test "should not destroy user" do
+      assert_no_difference("User.count") do
+        delete user_url(@user)
+      end
     end
   end
 end

@@ -13,5 +13,9 @@ class Current < ActiveSupport::CurrentAttributes
     def signed_in?
       @user.present?
     end
+
+    def is?(other)
+      @user == other
+    end
   end
 end

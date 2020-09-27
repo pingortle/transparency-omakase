@@ -10,4 +10,14 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def login(name = nil, model: nil, password: "secret")
+    who = model || users(name)
+    post "/sessions", params: {
+      session: {
+        email: who.email,
+        password: password
+      }
+    }
+    assert_response :redirect
+  end
 end
