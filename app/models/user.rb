@@ -10,5 +10,5 @@ class User < ApplicationRecord
     end
   end
 
-  validates :email, presence: true, uniqueness: true
+  validates :login, presence: true, uniqueness: true, format: /[a-zA-Z0-9_]{3,}/
 end

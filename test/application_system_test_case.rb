@@ -5,7 +5,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
   def login(name)
     visit new_session_url
-    fill_in "Email", with: users(name).email
+    fill_in "Login", with: users(name).login
     fill_in "Password", with: "secret"
     click_on "Login"
   end

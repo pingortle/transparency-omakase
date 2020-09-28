@@ -14,7 +14,7 @@ class ActiveSupport::TestCase
     who = model || users(name)
     post "/sessions", params: {
       session: {
-        email: who.email,
+        login: who.login,
         password: password
       }
     }

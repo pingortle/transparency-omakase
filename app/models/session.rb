@@ -2,12 +2,12 @@ class Session
   include ActiveModel::Model
   include ActiveModel::Attributes
 
-  attribute :email, :string
+  attribute :login, :string
   attribute :password, :string
 
-  validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}
+  validates_presence_of :login, :password
 
   def self.wrap(user)
-    new(email: user.email, password: user.password)
+    new(login: user.login, password: user.password)
   end
 end

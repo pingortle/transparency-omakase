@@ -32,14 +32,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     test "should update user" do
       original = @user.dup
-      patch user_url(@user), params: {user: {email: "new@example.com", password: "new secret", password_confirmation: "new secret"}}
-      assert_equal "new@example.com", @user.reload.email
+      patch user_url(@user), params: {user: {login: "new_user", password: "new secret", password_confirmation: "new secret"}}
+      assert_equal "new_user", @user.reload.login
       assert_not_equal original.password_digest, @user.reload.password_digest
     end
 
     test "should not create user" do
       assert_no_difference("User.count") do
-        post users_url, params: {user: {email: "new@example.com", password: "secret", password_confirmation: "secret"}}
+        post users_url, params: {user: {login: "new_user", password: "secret", password_confirmation: "secret"}}
       end
     end
 
@@ -57,14 +57,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     test "should not update user" do
       original = @user.dup
-      patch user_url(@user), params: {user: {email: "new@example.com", password: "new secret", password_confirmation: "new secret"}}
-      assert_equal original.email, @user.reload.email
+      patch user_url(@user), params: {user: {login: "new_user", password: "new secret", password_confirmation: "new secret"}}
+      assert_equal original.login, @user.reload.login
       assert_equal original.password_digest, @user.reload.password_digest
     end
 
     test "should not create user" do
       assert_no_difference("User.count") do
-        post users_url, params: {user: {email: "new@example.com", password: "secret", password_confirmation: "secret"}}
+        post users_url, params: {user: {login: "new_user", password: "secret", password_confirmation: "secret"}}
       end
     end
 
@@ -78,14 +78,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   class Unauthorized < self
     test "should not update user" do
       original = @user.dup
-      patch user_url(@user), params: {user: {email: "new@example.com", password: "new secret", password_confirmation: "new secret"}}
-      assert_equal original.email, @user.reload.email
+      patch user_url(@user), params: {user: {login: "new_user", password: "new secret", password_confirmation: "new secret"}}
+      assert_equal original.login, @user.reload.login
       assert_equal original.password_digest, @user.reload.password_digest
     end
 
     test "should not create user" do
       assert_no_difference("User.count") do
-        post users_url, params: {user: {email: "new@example.com", password: "secret", password_confirmation: "secret"}}
+        post users_url, params: {user: {login: "new_user", password: "secret", password_confirmation: "secret"}}
       end
     end
 

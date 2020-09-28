@@ -19,7 +19,7 @@ class UsersTest < ApplicationSystemTestCase
       visit users_url
       click_on "Edit", match: :first
 
-      fill_in "Email", with: @user.email
+      fill_in "Login", with: @user.login
       fill_in "Password", with: "secret"
       fill_in "Password confirmation", with: "secret"
       click_on "Update User"

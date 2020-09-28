@@ -8,8 +8,14 @@
 
   <%= form_for Session.new, html: {class: "d-flex flex-column p-2"} do |form| %>
     <div class="d-flex flex-column mt-4">
-      <%= form.label :email %>
-      <%= form.text_field :email, type: :email, class: "form-control f4" %>
+      <%= form.label :login %>
+      <%= form.text_field :login,
+            type: :text,
+            class: "form-control f4",
+            pattern: "[a-zA-Z0-9_]{3,}",
+            title: "Enter a valid username made up of only letters, numbers, or underscores",
+            autocapitalize: "none"
+      %>
     </div>
 
     <div class="d-flex flex-column mt-4">

@@ -7,13 +7,13 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show errors when invalid" do
-    post sessions_url(session: {email: ""})
+    post sessions_url(session: {login: ""})
     assert_response :success
     assert_match "invalid", response.body
   end
 
   test "should sign in on valid create" do
-    post sessions_url(session: {email: "one@example.com", password: "secret"})
+    post sessions_url(session: {login: "one", password: "secret"})
     follow_redirect!
     assert_equal "Logged in!", flash[:notice]
   end
