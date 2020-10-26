@@ -2,7 +2,7 @@ class Current < ActiveSupport::CurrentAttributes
   attribute :user
 
   def user=(user)
-    super Visitor.new(User.find_by(id: user))
+    super Visitor.new(user)
   end
 
   class Visitor
