@@ -3,10 +3,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_login(session_params[:login])
+    user = User.find_by(login: session_params[:login])
     if user&.authenticate(session_params[:password])
-      session[:user_id] = user.id
-      Current.set_user_with(id: user)
+      Current.session.authorize(user)
       redirect_to root_url, notice: "Logged in!"
     else
       flash.now[:alert] = "Login or password is invalid"
@@ -15,11 +14,11 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    Current.reset
-    [:oauth_id, :user_id].each do |auth_id|
-      session.delete(auth_id)
-    end
-    redirect_to cognito_url, notice: "Logged out!"
+    redirect_url = Current.session.authorization&.authority.then { |authority|
+      authority.to_s == "cognito-idp" ? cognito_url : new_session_url
+    } || new_session_url
+    Current.session.revoke
+    redirect_to redirect_url, notice: "Logged out!"
   end
 
   def session_params

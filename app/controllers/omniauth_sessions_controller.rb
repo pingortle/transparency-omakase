@@ -2,8 +2,14 @@ class OmniauthSessionsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :dev_create
 
   def create
-    session[:oauth_id] = auth_hash[:uid]
-    Current.user = OpenStruct.new(id: auth_hash[:uid])
+    identity = Identity.find_or_create_by(
+      authority: auth_params[:provider],
+      identifier: auth_params[:uid]
+    ) { |this|
+      this.omniauth_info = auth_params[:info]
+    }
+
+    Current.session.authorize(identity)
     redirect_to "/"
   end
 
@@ -12,7 +18,7 @@ class OmniauthSessionsController < ApplicationController
     create
   end
 
-  def auth_hash
+  def auth_params
     request.env["omniauth.auth"]
   end
 end
