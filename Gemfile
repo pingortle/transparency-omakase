@@ -35,6 +35,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 
 gem "omniauth"
 gem "omniauth-rails_csrf_protection"
+gem "omniauth-auth0"
 gem "omniauth-cognito-idp"
 
 # *********

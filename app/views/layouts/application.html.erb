@@ -32,6 +32,7 @@
           <% else %>
             <%= link_to "Sign in", new_session_path, class: "btn btn-invisible mr-2" %>
             <%= link_to "Sign in with Amazon", "/auth/cognito-idp", method: :post, class: "btn btn-invisible" %>
+            <%= link_to "Sign in with Auth0", "/auth/auth0", method: :post, class: "btn btn-invisible" %>
             <% if Rails.env.development? %>
               <%= link_to "Sign into Dev", "/auth/developer", method: :post, class: "btn btn-invisible" %>
             <% end %>
