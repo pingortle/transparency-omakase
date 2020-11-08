@@ -14,8 +14,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    redirect_url = Current.session.authorization.authority.then { |authority|
-      case authority.to_sym
+    redirect_url = Current.session.authority.then { |authority|
+      case authority&.to_sym
       when :auth0 then auth0_url
       when :"cognito-idp" then cognito_url
       else new_session_url

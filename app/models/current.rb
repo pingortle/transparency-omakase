@@ -51,5 +51,9 @@ class Current < ActiveSupport::CurrentAttributes
     def authorization
       @authorization ||= GlobalID::Locator.locate_signed(raw[:authorization_sgid])
     end
+
+    def authority
+      authorization&.authority
+    end
   end
 end
