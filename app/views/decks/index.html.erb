@@ -6,13 +6,13 @@
 <% end %>
 
 <% if Current.user.signed_in? %>
-  <%= link_to "New Deck", new_deck_path, class: "btn btn-primary my-2", role: "button" %>
+  <%= link_to "New", new_deck_path, class: "btn btn-primary my-2", role: "button" %>
 <% end %>
 <div id="decks" class="Box mb-8">
   <div class="Box-header">
     <filter-input aria-owns="decks">
       <label>
-        Filter decks
+        Search
         <input type="text" autofocus autocomplete="off" class="form-control input-block f4">
       </label>
     </filter-input>
@@ -40,5 +40,5 @@
     <% end %>
   </div>
 
-  <div data-filter-empty-state hidden class="Box-body">No decks match</div>
+  <div data-filter-empty-state hidden class="Box-body">No matches</div>
 </div>
