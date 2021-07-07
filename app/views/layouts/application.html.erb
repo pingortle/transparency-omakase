@@ -30,7 +30,10 @@
           <% if Current.user.signed_in? %>
             <%= link_to "Sign out", session_path(id: :current_user), method: :delete, class: "btn btn-invisible" %>
           <% else %>
-            <%= link_to "Sign in", new_session_path, class: "btn btn-invisible" %>
+            <%= link_to "Sign in", "/auth/auth0", method: :post, class: "btn btn-invisible mr-2" %>
+            <% if Rails.env.development? %>
+              <%= link_to "Sign into Dev", "/auth/developer", method: :post, class: "btn btn-invisible" %>
+            <% end %>
           <% end %>
         </div>
       </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_27_134340) do
+ActiveRecord::Schema.define(version: 2020_10_26_133805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2020_09_27_134340) do
     t.text "raw"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "identities", force: :cascade do |t|
+    t.string "authority", null: false
+    t.string "identifier", null: false
+    t.jsonb "omniauth_info"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["authority", "identifier"], name: "index_identities_on_authority_and_identifier", unique: true
   end
 
   create_table "users", force: :cascade do |t|

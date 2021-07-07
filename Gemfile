@@ -30,6 +30,15 @@ gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", ">= 1.4.2", require: false
 
 # *********
+# Auth
+# *********
+
+gem "omniauth"
+gem "omniauth-rails_csrf_protection"
+gem "omniauth-auth0"
+gem "omniauth-cognito-idp"
+
+# *********
 # Sprinkles
 # *********
 
