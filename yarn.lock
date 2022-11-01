@@ -1088,19 +1088,17 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@primer/css@^15.1.0":
-  version "15.1.0"
-  resolved "https://registry.yarnpkg.com/@primer/css/-/css-15.1.0.tgz#8158724f8709a2d09b36b6f7f4ff8b2e62725290"
-  integrity sha512-UmmfjwA26FhOGBMuAfJQOBeRHz9YUcw7khPtifp7K+VyTDEhLnJPRTdApxtivH69vHTkSJ3rh/W1gWYolrLgVA==
+"@primer/css@^20.5.1":
+  version "20.5.1"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-20.5.1.tgz#85e30ceb629e469f164f03549a2313f9fdd7a2a4"
+  integrity sha512-kMjlYzXqE0k6xIKC0BCZEDlngYZUcvbTgDWqUVbOk9IM19EYTMgHxME5i8wHpVGH22fQb8jnMbShdIq03uCWJw==
   dependencies:
-    "@primer/octicons" "^9.1.1"
+    "@primer/primitives" "^7.9.0"
 
-"@primer/octicons@^9.1.1":
-  version "9.6.0"
-  resolved "https://registry.yarnpkg.com/@primer/octicons/-/octicons-9.6.0.tgz#e195f2dd5f30b6918ad5d8ff224c12f778d02408"
-  integrity sha512-B5Wzk5izRXXz0JqEXJkVUtqhCXSpUKgqYkVwegMkp5sziBW+ksd9LPbONlCWyyLODwf9GsI2sBXekR7m+JJDBw==
-  dependencies:
-    object-assign "^4.1.1"
+"@primer/primitives@^7.9.0":
+  version "7.10.0"
+  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-7.10.0.tgz#de0d9648d484184442583564f02d6600b872fa5f"
+  integrity sha512-DdLHq21e93R9qDHyRuRpytBLY0Up9IwNWMOUgPNW6lRSng4N4+IdUlLS3Ekbasmxfs8Z8vKS8aezeYovQ5qsxQ==
 
 "@rails/actioncable@^6.0.0":
   version "6.0.3"
